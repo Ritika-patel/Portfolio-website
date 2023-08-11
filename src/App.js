@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Navbar from "./components/Navbar";
+import About from "./components/About";
+import Timeline from "./components/Timeline";
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Contact from "./components/Contact";
 
 function App() {
+  const [openNav, setOpenNav] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="debug-screens text-textwhite mx-8 sm:mx-14 App">
+      <Navbar openNav={openNav} setOpenNav={setOpenNav} />
+      {openNav ? (
+        ""
+      ) : (
+        <>
+          <About />
+          <Timeline />
+          <Projects />
+          <Skills />
+          <Contact />
+        </>
+      )}
     </div>
   );
 }
